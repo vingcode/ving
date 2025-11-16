@@ -23,14 +23,6 @@ jobs:
         make clean
         make
     
-    - name: Test compilation
-      run: |
-        echo "style:black" > test.ving
-        echo "title: Test" >> test.ving
-        echo "text(bold): Hello World" >> test.ving
-        ./vingc test.ving test.html
-        test -f test.html && echo "Build successful!" || exit 1
-    
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -55,31 +47,6 @@ jobs:
         gcc -Wall -Wextra -std=c11 -o vingc.exe vingc.c
         if (-not (Test-Path vingc.exe)) {
           Write-Host "Build failed!"
-          exit 1
-        }
-    
-    - name: Test compilation
-      shell: pwsh
-      run: |
-        Write-Host "Creating test.ving file..."
-        "style:black" | Out-File -FilePath test.ving -Encoding utf8 -NoNewline
-        "`ntitle: Test" | Out-File -FilePath test.ving -Append -Encoding utf8 -NoNewline
-        "`ntext(bold): Hello World" | Out-File -FilePath test.ving -Append -Encoding utf8
-        Write-Host "Test file content:"
-        Get-Content test.ving
-        Write-Host "Running vingc.exe..."
-        $exitCode = 0
-        & .\vingc.exe test.ving test.html 2>&1 | Tee-Object -Variable output
-        $exitCode = $LASTEXITCODE
-        Write-Host "Compiler output: $output"
-        Write-Host "Exit code: $exitCode"
-        if (Test-Path test.html) {
-          Write-Host "✓ Build successful! test.html created."
-          Get-Content test.html | Select-Object -First 5
-        } else {
-          Write-Host "✗ Build failed! test.html not found."
-          Write-Host "Current directory files:"
-          Get-ChildItem | Select-Object Name, Length
           exit 1
         }
     

@@ -49,16 +49,28 @@ jobs:
         choco install mingw -y
     
     - name: Build Windows
+      shell: pwsh
       run: |
-        x86_64-w64-mingw32-gcc -Wall -Wextra -std=c11 -o vingc.exe vingc.c
+        $env:Path += ";C:\ProgramData\chocolatey\bin"
+        gcc -Wall -Wextra -std=c11 -o vingc.exe vingc.c
+        if (-not (Test-Path vingc.exe)) {
+          Write-Host "Build failed!"
+          exit 1
+        }
     
     - name: Test compilation
+      shell: pwsh
       run: |
-        echo "style:black" > test.ving
-        echo "title: Test" >> test.ving
-        echo "text(bold): Hello World" >> test.ving
-        wine vingc.exe test.ving test.html || ./vingc.exe test.ving test.html || echo "Windows build test skipped"
-        test -f test.html && echo "Build successful!" || echo "Build completed (test skipped)"
+        "style:black" | Out-File -FilePath test.ving -Encoding utf8
+        "title: Test" | Out-File -FilePath test.ving -Append -Encoding utf8
+        "text(bold): Hello World" | Out-File -FilePath test.ving -Append -Encoding utf8
+        .\vingc.exe test.ving test.html
+        if (Test-Path test.html) {
+          Write-Host "Build successful!"
+        } else {
+          Write-Host "Build completed (test skipped)"
+          exit 1
+        }
     
     - name: Upload artifacts
       uses: actions/upload-artifact@v4

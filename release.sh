@@ -28,17 +28,16 @@ cp vingc release/vingc-linux-x86_64 2>/dev/null || true
 cp vingc.exe release/vingc-windows-x86_64.exe 2>/dev/null || true
 cp README.md release/ 2>/dev/null || true
 cp USAGE release/ 2>/dev/null || true
-cp BUILD.md release/ 2>/dev/null || true
 
 # Create archives
 if [ -f release/vingc-linux-x86_64 ]; then
     echo "Creating Linux archive..."
-    tar -czf ving-${TAG}-linux.tar.gz -C release vingc-linux-x86_64 README.md USAGE BUILD.md
+    tar -czf ving-${TAG}-linux.tar.gz -C release vingc-linux-x86_64 README.md USAGE
 fi
 
 if [ -f release/vingc-windows-x86_64.exe ]; then
     echo "Creating Windows archive..."
-    zip -r ving-${TAG}-windows.zip release/vingc-windows-x86_64.exe README.md USAGE BUILD.md
+    zip -r ving-${TAG}-windows.zip release/vingc-windows-x86_64.exe README.md USAGE
 fi
 
 echo "Release files created:"

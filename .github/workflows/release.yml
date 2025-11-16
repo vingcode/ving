@@ -26,7 +26,11 @@ jobs:
     - name: Build Windows
       run: |
         sudo apt-get install -y mingw-w64
-        x86_64-w64-mingw32-gcc -Wall -Wextra -std=c11 -static -o vingc.exe vingc.c || echo "Windows build skipped"
+        x86_64-w64-mingw32-gcc -Wall -Wextra -std=c11 -static -o vingc.exe vingc.c
+        if [ ! -f vingc.exe ]; then
+          echo "Windows build failed!"
+          exit 1
+        fi
     
     - name: Get version from tag
       id: tag
@@ -36,21 +40,19 @@ jobs:
       run: |
         VERSION=${GITHUB_REF#refs/tags/}
         mkdir -p release
-        cp vingc release/vingc-linux-x86_64 || true
-        if [ -f vingc.exe ]; then
-          cp vingc.exe release/vingc-windows-x86_64.exe
-        fi
-        cp README.md release/ || true
-        cp USAGE release/ || true
-        cp BUILD.md release/ || true
+        cp vingc release/vingc-linux-x86_64
+        cp vingc.exe release/vingc-windows-x86_64.exe
+        cp README.md release/
+        cp USAGE release/
         
-        if [ -f release/vingc-linux-x86_64 ]; then
-          tar -czf ving-${VERSION}-linux.tar.gz -C release vingc-linux-x86_64 README.md USAGE BUILD.md
-        fi
+        # Create Linux archive
+        tar -czf ving-${VERSION}-linux.tar.gz -C release vingc-linux-x86_64 README.md USAGE
         
-        if [ -f release/vingc-windows-x86_64.exe ]; then
-          zip -r ving-${VERSION}-windows.zip release/vingc-windows-x86_64.exe README.md USAGE BUILD.md
-        fi
+        # Create Windows archive
+        zip -r ving-${VERSION}-windows.zip release/vingc-windows-x86_64.exe README.md USAGE
+        
+        echo "Release archives created:"
+        ls -lh ving-${VERSION}-*.tar.gz ving-${VERSION}-*.zip
     
     - name: Create Release
       uses: softprops/action-gh-release@v1
@@ -65,13 +67,26 @@ jobs:
           ## Release ${{ github.ref_name }}
           
           ### Downloads
-          - Linux: `ving-${{ github.ref_name }}-linux.tar.gz`
-          - Windows: `ving-${{ github.ref_name }}-windows.zip`
+          - **Linux**: [ving-${{ github.ref_name }}-linux.tar.gz](ving-${{ github.ref_name }}-linux.tar.gz)
+          - **Windows**: [ving-${{ github.ref_name }}-windows.zip](ving-${{ github.ref_name }}-windows.zip)
           
           ### Installation
-          Extract the archive and run:
-          - Linux: `chmod +x vingc-linux-x86_64 && ./vingc-linux-x86_64`
-          - Windows: `vingc-windows-x86_64.exe`
+          
+          **Linux:**
+          ```bash
+          tar -xzf ving-${{ github.ref_name }}-linux.tar.gz
+          chmod +x vingc-linux-x86_64
+          ./vingc-linux-x86_64
+          ```
+          
+          **Windows:**
+          ```bash
+          unzip ving-${{ github.ref_name }}-windows.zip
+          vingc-windows-x86_64.exe
+          ```
+          
+          ### What's Changed
+          See the [full changelog](https://github.com/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.ref_name }})
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

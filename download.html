@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Ving</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #cccccc;
+            font-size: 1.2em;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2em;
+            font-weight: 600;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            color: #ffffff;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333333;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: #e0e0e0;
+            font-size: 1.05em;
+        }
+
+        .code-block {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 25px 0;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.95em;
+            border-left: 4px solid #4a9eff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        code {
+            color: #4a9eff;
+        }
+
+        .button {
+            display: inline-block;
+            background: #ffffff;
+            color: #000000;
+            padding: 18px 36px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(255,255,255,0.1);
+            font-size: 1.1em;
+        }
+
+        .button:hover {
+            background: #4a9eff;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74,158,255,0.3);
+        }
+
+        .button-secondary {
+            background: #333333;
+            color: #ffffff;
+        }
+
+        .button-secondary:hover {
+            background: #555555;
+        }
+
+        .download-section {
+            background: #0a0a0a;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border: 1px solid #333333;
+            text-align: center;
+        }
+
+        .download-item {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border: 1px solid #333333;
+        }
+
+        .download-item h3 {
+            color: #4a9eff;
+            margin-top: 0;
+        }
+
+        .section-box {
+            background: #0a0a0a;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border: 1px solid #333333;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #333333;
+            text-align: center;
+            color: #999999;
+            font-size: 0.9em;
+        }
+
+        .nav {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html" class="button button-secondary">← Back to Home</a>
+    </div>
+
+    <h1>Download Ving</h1>
+    <p class="subtitle">Ready-to-use executables for quick start</p>
+
+    <div class="download-section">
+        <h2>Pre-built Binaries</h2>
+        <p>Download ready-to-use executables from GitHub Releases:</p>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="https://github.com/vingcode/ving/releases/latest" class="button" target="_blank" style="font-size: 1.2em; padding: 20px 40px;">Download Latest Release</a>
+        </div>
+
+        <div class="download-item">
+            <h3>Linux</h3>
+            <p>Executable for Linux (x86_64)</p>
+            <a href="https://github.com/vingcode/ving/releases/latest" class="button" target="_blank">Download Linux Release</a>
+            <p style="margin-top: 15px; color: #999;">Download <code>ving-*-linux.tar.gz</code> from releases</p>
+            <div class="code-block" style="margin-top: 20px; text-align: left;">
+<code># After download:
+tar -xzf ving-*-linux.tar.gz
+chmod +x vingc-linux-x86_64
+./vingc-linux-x86_64 example.ving output.html</code>
+            </div>
+        </div>
+
+        <div class="download-item">
+            <h3>Windows</h3>
+            <p>Executable for Windows (.exe)</p>
+            <a href="https://github.com/vingcode/ving/releases/latest" class="button" target="_blank">Download Windows Release</a>
+            <p style="margin-top: 15px; color: #999;">Download <code>ving-*-windows.zip</code> from releases</p>
+            <div class="code-block" style="margin-top: 20px; text-align: left;">
+<code># After download:
+# Extract zip file
+vingc-windows-x86_64.exe example.ving output.html</code>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-box">
+        <h2>Installation Instructions</h2>
+        
+        <h3>Linux</h3>
+        <ol>
+            <li>Download <code>vingc</code> file</li>
+            <li>Open terminal in the folder with the file</li>
+            <li>Make file executable:
+                <div class="code-block">
+<code>chmod +x vingc</code>
+                </div>
+            </li>
+            <li>Test it works:
+                <div class="code-block">
+<code>./vingc</code>
+                </div>
+            </li>
+            <li>Done! Now you can compile .ving files</li>
+        </ol>
+
+        <h3>Windows</h3>
+        <ol>
+            <li>Download <code>vingc.exe</code> file</li>
+            <li>Open command prompt (Win+R, type cmd)</li>
+            <li>Navigate to folder with file:
+                <div class="code-block">
+<code>cd path\to\folder\with\vingc.exe</code>
+                </div>
+            </li>
+            <li>Test it works:
+                <div class="code-block">
+<code>vingc.exe</code>
+                </div>
+            </li>
+            <li>Done! Now you can compile .ving files</li>
+        </ol>
+    </div>
+
+    <div class="section-box">
+        <h2>GitHub Releases</h2>
+        <p>All releases are available on GitHub:</p>
+        <ul>
+            <li><a href="https://github.com/vingcode/ving/releases/latest" style="color: #4a9eff;" target="_blank">Latest Release</a> - Get the newest version</li>
+            <li><a href="https://github.com/vingcode/ving/releases" style="color: #4a9eff;" target="_blank">All Releases</a> - Browse all versions</li>
+        </ul>
+        <p>Each release includes:</p>
+        <ul>
+            <li>Linux binary (tar.gz archive)</li>
+            <li>Windows binary (zip archive)</li>
+            <li>Documentation (README.md, USAGE, BUILD.md)</li>
+        </ul>
+    </div>
+
+    <div class="section-box">
+        <h2>Build from Source</h2>
+        <p>If you want to build the compiler yourself:</p>
+        <ol>
+            <li>Clone the repository: <code>git clone https://github.com/vingcode/ving.git</code></li>
+            <li>Install GCC compiler</li>
+            <li>Compile:
+                <div class="code-block">
+<code># Linux
+make
+
+# Windows (requires MinGW)
+make windows</code>
+                </div>
+            </li>
+        </ol>
+        <p>See <a href="BUILD.md" style="color: #4a9eff;">BUILD.md</a> for details.</p>
+    </div>
+
+    <div class="section-box">
+        <h2>Verification</h2>
+        <p>After installation create test file <code>test.ving</code>:</p>
+        <div class="code-block">
+<code>style:black
+title: Test
+
+text(bold): Hello, Ving!
+
+button(st1):Button</code>
+        </div>
+        <p>Then compile:</p>
+        <div class="code-block">
+<code># Linux
+./vingc test.ving test.html
+
+# Windows
+vingc.exe test.ving test.html</code>
+        </div>
+        <p>Open <code>test.html</code> in browser - it should work!</p>
+    </div>
+
+    <div style="text-align: center; margin: 40px 0;">
+        <a href="index.html" class="button button-secondary">Home</a>
+        <a href="docs.html" class="button">Documentation</a>
+    </div>
+
+    <footer>
+        <p>© 2024 Ving Programming Language</p>
+        <p style="margin-top: 10px; color: #666;">Download and start creating websites today!</p>
+    </footer>
+</body>
+</html>

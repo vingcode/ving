@@ -1,0 +1,77 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc make
+    
+    - name: Build Linux
+      run: |
+        make clean
+        make static
+        chmod +x vingc
+    
+    - name: Build Windows
+      run: |
+        sudo apt-get install -y mingw-w64
+        x86_64-w64-mingw32-gcc -Wall -Wextra -std=c11 -static -o vingc.exe vingc.c || echo "Windows build skipped"
+    
+    - name: Get version from tag
+      id: tag
+      run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+    
+    - name: Create release archive
+      run: |
+        VERSION=${GITHUB_REF#refs/tags/}
+        mkdir -p release
+        cp vingc release/vingc-linux-x86_64 || true
+        if [ -f vingc.exe ]; then
+          cp vingc.exe release/vingc-windows-x86_64.exe
+        fi
+        cp README.md release/ || true
+        cp USAGE release/ || true
+        cp BUILD.md release/ || true
+        
+        if [ -f release/vingc-linux-x86_64 ]; then
+          tar -czf ving-${VERSION}-linux.tar.gz -C release vingc-linux-x86_64 README.md USAGE BUILD.md
+        fi
+        
+        if [ -f release/vingc-windows-x86_64.exe ]; then
+          zip -r ving-${VERSION}-windows.zip release/vingc-windows-x86_64.exe README.md USAGE BUILD.md
+        fi
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          ving-*-linux.tar.gz
+          ving-*-windows.zip
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+        body: |
+          ## Release ${{ github.ref_name }}
+          
+          ### Downloads
+          - Linux: `ving-${{ github.ref_name }}-linux.tar.gz`
+          - Windows: `ving-${{ github.ref_name }}-windows.zip`
+          
+          ### Installation
+          Extract the archive and run:
+          - Linux: `chmod +x vingc-linux-x86_64 && ./vingc-linux-x86_64`
+          - Windows: `vingc-windows-x86_64.exe`
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

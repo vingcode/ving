@@ -1,0 +1,64 @@
+ЯЗЫК ПРОГРАММИРОВАНИЯ VING
+==========================
+
+Язык Ving - это простой язык для веб-кодинга, написанный на C.
+
+ДИРЕКТИВЫ:
+----------
+
+style:black          - стиль сайта (black/dark, light/white, или по умолчанию)
+title: Test           - название сайта которое показывается в вкладке
+
+СИНТАКСИС:
+----------
+
+1. КНОПКА (button):
+   button(st1)                          - кнопка с пользовательским стилем st1
+   button()                             - кнопка без параметров
+   button(link:https://example.com):Click Me!  - кнопка со ссылкой и текстом
+   button(st1,link:https://example.com):Click  - кнопка со стилем и ссылкой
+   button():Текст кнопки                - кнопка с текстом
+
+2. ТЕКСТ (text):
+   text(bold): Текст    - жирный текст
+   text(italic): Текст  - курсивный текст
+   text(bold,italic): Текст - жирный и курсивный
+   text(): Текст        - обычный текст
+
+3. ИЗОБРАЖЕНИЕ (img):
+   img(big): image.png  - большое изображение
+   img(): image.png      - обычное изображение
+
+4. ВИДЕО (video):
+   video(controls):video.mp4  - видео с контролами
+   video(autoplay,loop,muted):video.mp4  - автоплеер с зацикливанием
+   video(controls,width:800,height:450):video.mp4  - видео с размерами
+   Параметры: controls, autoplay, loop, muted, width:значение, height:значение
+
+5. АУДИО (audio):
+   audio(controls):audio.mp3  - аудио с контролами
+   audio(controls,autoplay):audio.mp3  - аудио с автоплеем
+   Параметры: controls, autoplay, loop, muted
+
+6. IFRAME (iframe):
+   iframe(src:https://example.com)  - встроенная страница
+   iframe(allowfullscreen,width:560,height:315):https://youtube.com/embed/...  - YouTube видео
+   Параметры: allowfullscreen, width:значение, height:значение
+
+КОМПИЛЯЦИЯ:
+-----------
+
+1. Скомпилировать компилятор:
+   make
+
+2. Скомпилировать .ving файл в HTML:
+   ./vingc input.ving output.html
+
+ПРИМЕРЫ:
+--------
+
+Смотрите файлы:
+- example.ving - базовый пример
+- examples.ving - расширенные примеры
+- demo.ving - демонстрация возможностей
+

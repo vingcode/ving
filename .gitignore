@@ -1,0 +1,39 @@
+# Compiled binaries
+vingc
+vingc.exe
+*.exe
+
+# Build artifacts
+*.o
+*.a
+*.so
+*.dll
+
+# Output files
+*.html
+!index.html
+!docs.html
+!download.html
+output.html
+test.html
+
+# Test files
+test.ving
+*.ving.bak
+
+# Release files
+release/
+*.tar.gz
+*.zip
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ving Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #cccccc;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2em;
+            font-weight: 600;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            color: #ffffff;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333333;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #4a9eff;
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: #e0e0e0;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 30px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            color: #e0e0e0;
+            font-size: 1.05em;
+        }
+
+        .code-block {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 25px 0;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.95em;
+            border-left: 4px solid #4a9eff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        code {
+            color: #4a9eff;
+        }
+
+        .button {
+            display: inline-block;
+            background: #ffffff;
+            color: #000000;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 12px 12px 12px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(255,255,255,0.1);
+        }
+
+        .button:hover {
+            background: #4a9eff;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74,158,255,0.3);
+        }
+
+        .button-secondary {
+            background: #333333;
+            color: #ffffff;
+        }
+
+        .button-secondary:hover {
+            background: #555555;
+        }
+
+        .section-box {
+            background: #0a0a0a;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border: 1px solid #333333;
+        }
+
+        .example-section {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 6px;
+            margin: 25px 0;
+            border: 1px solid #333333;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .highlight {
+            background: #1a1a1a;
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: #4a9eff;
+            font-weight: 600;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #333333;
+            text-align: center;
+            color: #999999;
+            font-size: 0.9em;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #333333;
+            margin: 50px 0;
+        }
+
+        .nav {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html" class="button button-secondary">← Back to Home</a>
+    </div>
+
+    <h1>Ving Documentation</h1>
+    <p class="subtitle">Complete guide to Ving programming language</p>
+
+    <div class="section-box">
+        <h2>Installation</h2>
+        <h3>Build from Source</h3>
+        <ol>
+            <li>Clone the repository or download source code</li>
+            <li>Install GCC compiler:
+                <div class="code-block">
+<code># Arch Linux / Manjaro
+sudo pacman -S gcc
+
+# Ubuntu / Debian
+sudo apt install gcc
+
+# macOS
+brew install gcc</code>
+                </div>
+            </li>
+            <li>Compile the compiler:
+                <div class="code-block">
+<code>make</code>
+                </div>
+            </li>
+            <li>Done! Executable file <code>vingc</code> is created</li>
+        </ol>
+
+        <h3>Using Pre-built Binaries</h3>
+        <p>Download ready-to-use executable for your system:</p>
+        <ul>
+            <li><strong>Linux:</strong> Download <code>vingc</code> and make it executable: <code>chmod +x vingc</code></li>
+            <li><strong>Windows:</strong> Download <code>vingc.exe</code> and run from command line</li>
+        </ul>
+    </div>
+
+    <h2>Quick Start</h2>
+    <div class="section-box">
+        <ol>
+            <li>Create <code>example.ving</code> file:
+                <div class="code-block">
+<code>style:black
+title: My First Website
+
+text(bold,big): Hello, World!
+
+button(st1,link:https://example.com):Click Me</code>
+                </div>
+            </li>
+            <li>Compile to HTML:
+                <div class="code-block">
+<code>./vingc example.ving output.html</code>
+                </div>
+            </li>
+            <li>Open <code>output.html</code> in browser!</li>
+        </ol>
+    </div>
+
+    <h2>Directives</h2>
+    <div class="section-box">
+        <h4>style: - Theme Setting</h4>
+        <p>Sets the page color scheme:</p>
+        <ul>
+            <li><code>style:black</code> or <code>style:dark</code> - dark theme</li>
+            <li><code>style:light</code> or <code>style:white</code> - light theme</li>
+            <li>Default - standard light theme</li>
+        </ul>
+
+        <h4>title: - Page Title</h4>
+        <p>Sets the title displayed in browser tab:</p>
+        <div class="code-block">
+<code>title: My Website</code>
+        </div>
+    </div>
+
+    <h2>Elements</h2>
+
+    <div class="example-section">
+        <h3>Button</h3>
+        <p>Creates a button with various parameters:</p>
+        <div class="code-block">
+<code>button()                    # Simple button
+button(st1)                  # Button with style
+button(link:https://example.com):Click # Button with link
+button(st1,link:https://example.com):Click # Style and link</code>
+        </div>
+    </div>
+
+    <div class="example-section">
+        <h3>Text</h3>
+        <p>Creates a text block with formatting:</p>
+        <div class="code-block">
+<code>text(): Plain text
+text(bold): Bold text
+text(italic): Italic text
+text(bold,italic): Bold and italic
+text(big): Large text</code>
+        </div>
+    </div>
+
+    <div class="example-section">
+        <h3>Image</h3>
+        <p>Inserts an image on the page:</p>
+        <div class="code-block">
+<code>img(): photo.png           # Regular image
+img(big): photo.png          # Large image</code>
+        </div>
+    </div>
+
+    <div class="example-section">
+        <h3>Video</h3>
+        <p>Inserts video on the page:</p>
+        <div class="code-block">
+<code>video(controls):video.mp4
+video(autoplay,loop,muted):video.mp4
+video(controls,width:800,height:450):video.mp4</code>
+        </div>
+        <p><strong>Parameters:</strong> controls, autoplay, loop, muted, width:value, height:value</p>
+    </div>
+
+    <div class="example-section">
+        <h3>Audio</h3>
+        <p>Inserts audio player:</p>
+        <div class="code-block">
+<code>audio(controls):audio.mp3
+audio(controls,autoplay):audio.mp3
+audio(controls,loop):audio.mp3</code>
+        </div>
+        <p><strong>Parameters:</strong> controls, autoplay, loop, muted</p>
+    </div>
+
+    <div class="example-section">
+        <h3>Iframe</h3>
+        <p>Embeds external page or video:</p>
+        <div class="code-block">
+<code>iframe(src:https://example.com)
+iframe(allowfullscreen,width:560,height:315):https://youtube.com/embed/...</code>
+        </div>
+        <p><strong>Parameters:</strong> allowfullscreen, width:value, height:value</p>
+    </div>
+
+    <h2>Examples</h2>
+    <div class="section-box">
+        <h3>Simple Website</h3>
+        <div class="code-block">
+<code>style:black
+title: My Website
+
+text(bold,big): Welcome!
+
+text(): This is my first Ving website
+
+button(st1,link:https://example.com):Go</code>
+        </div>
+
+        <h3>Website with Media</h3>
+        <div class="code-block">
+<code>style:black
+title: Media Site
+
+text(bold): Video
+video(controls):video.mp4
+
+text(bold): Audio
+audio(controls):audio.mp3
+
+text(bold): YouTube
+iframe(allowfullscreen,width:560,height:315):https://youtube.com/embed/...</code>
+        </div>
+    </div>
+
+    <h2>Compilation</h2>
+    <div class="section-box">
+        <h3>Basic Usage</h3>
+        <div class="code-block">
+<code>./vingc input.ving output.html</code>
+        </div>
+
+        <h3>Parameters</h3>
+        <ul>
+            <li><code>input.ving</code> - input file with Ving code</li>
+            <li><code>output.html</code> - output HTML file (optional, defaults to output.html)</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div style="text-align: center; margin: 40px 0;">
+        <a href="index.html" class="button">Home</a>
+        <a href="USAGE" class="button button-secondary">Quick Reference</a>
+    </div>
+
+    <footer>
+        <p>© 2024 Ving Programming Language</p>
+        <p style="margin-top: 10px; color: #666;">Complete documentation for Ving language</p>
+    </footer>
+</body>
+</html>
+

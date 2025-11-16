@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Install dependencies
       run: |
@@ -32,7 +32,7 @@ jobs:
         test -f test.html && echo "Build successful!" || exit 1
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: vingc-linux
         path: vingc
@@ -42,7 +42,7 @@ jobs:
     runs-on: windows-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Install MinGW
       run: |
@@ -61,7 +61,7 @@ jobs:
         test -f test.html && echo "Build successful!" || echo "Build completed (test skipped)"
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: vingc-windows
         path: vingc.exe

@@ -40,6 +40,13 @@ make
 ./vingc example.ving output.html
 ```
 
+### Web IDE (VingIde)
+
+- Open `VingIde.html` in your browser to get an in-browser editor and live preview.
+- Edit Ving code on the left; the preview updates automatically on the right.
+- Use the **Download HTML** button to export the generated page.
+- VingIde supports directives (`style`, `title`) and elements (`text`, `button`, `img`, `video`, `audio`, `iframe`).
+
 ## Examples
 
 ### Simple Website
